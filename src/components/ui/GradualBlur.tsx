@@ -47,10 +47,10 @@ type GradualBlurProps = {
 const DEFAULT_CONFIG: Partial<GradualBlurProps> = {
   position: 'bottom',
   strength: 2,
-  height: '6rem',
+  height: '4rem',
   divCount: 5,
   exponential: false,
-  zIndex: 1000,
+  zIndex: 40,
   animated: false,
   duration: '0.3s',
   easing: 'ease-out',
@@ -63,28 +63,30 @@ const DEFAULT_CONFIG: Partial<GradualBlurProps> = {
 };
 
 const PRESETS: Record<string, Partial<GradualBlurProps>> = {
-  top: { position: 'top', height: '6rem' },
-  bottom: { position: 'bottom', height: '6rem' },
-  left: { position: 'left', height: '6rem' },
-  right: { position: 'right', height: '6rem' },
+  top: { position: 'top', height: '4rem' },
+  bottom: { position: 'bottom', height: '4rem' },
+  left: { position: 'left', height: '4rem' },
+  right: { position: 'right', height: '4rem' },
   subtle: { height: '4rem', strength: 1, opacity: 0.8, divCount: 3 },
-  intense: { height: '10rem', strength: 4, divCount: 8, exponential: true },
+  intense: { height: '4rem', strength: 4, divCount: 8, exponential: true },
   smooth: { height: '8rem', curve: 'bezier', divCount: 10 },
   sharp: { height: '5rem', curve: 'linear', divCount: 4 },
   header: { position: 'top', height: '8rem', curve: 'ease-out' },
   footer: { position: 'bottom', height: '8rem', curve: 'ease-out' },
-  sidebar: { position: 'left', height: '6rem', strength: 2.5 },
+  sidebar: { position: 'left', height: '4rem', strength: 2.5 },
   'page-header': {
     position: 'top',
-    height: '10rem',
+    height: '4rem',
     target: 'page',
-    strength: 3
+    strength: 3,
+    zIndex: 40
   },
   'page-footer': {
     position: 'bottom',
-    height: '10rem',
+    height: '4rem',
     target: 'page',
-    strength: 3
+    strength: 3,
+    zIndex: 40
   }
 };
 
@@ -233,7 +235,7 @@ const GradualBlur: React.FC<PropsWithChildren<GradualBlurProps>> = props => {
       pointerEvents: config.hoverIntensity ? 'auto' : 'none',
       opacity: isVisible ? 1 : 0,
       transition: config.animated ? `opacity ${config.duration} ${config.easing}` : undefined,
-      zIndex: isPageTarget ? config.zIndex + 100 : config.zIndex,
+      zIndex: config.zIndex,
       ...config.style
     };
 
@@ -241,14 +243,14 @@ const GradualBlur: React.FC<PropsWithChildren<GradualBlurProps>> = props => {
       baseStyle.height = responsiveHeight;
       baseStyle.width = responsiveWidth || '100%';
       baseStyle[config.position] = 0;
-      baseStyle.left = 0;
-      baseStyle.right = 0;
+      if (baseStyle.left === undefined) baseStyle.left = 0;
+      if (baseStyle.right === undefined) baseStyle.right = 0;
     } else if (isHorizontal) {
       baseStyle.width = responsiveWidth || responsiveHeight;
       baseStyle.height = '100%';
       baseStyle[config.position] = 0;
-      baseStyle.top = 0;
-      baseStyle.bottom = 0;
+      if (baseStyle.top === undefined) baseStyle.top = 0;
+      if (baseStyle.bottom === undefined) baseStyle.bottom = 0;
     }
 
     return baseStyle;
