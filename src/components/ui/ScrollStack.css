@@ -1,0 +1,41 @@
+.scroll-stack-scroller {
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  position: relative;
+  /* Optional: hide scrollbar if you want a cleaner look */
+  scrollbar-width: none; /* Firefox */
+}
+.scroll-stack-scroller::-webkit-scrollbar {
+  display: none; /* Chrome/Safari */
+}
+
+.scroll-stack-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 100px; /* Space before first card */
+  padding-bottom: 100px; /* Space after last card */
+  position: relative;
+  width: 100%;
+}
+
+.scroll-stack-card {
+  width: 100%;
+  max-width: 600px;
+  /* Basic styling for the card */
+  background: white;
+  border-radius: 24px;
+  padding: 40px;
+  box-shadow: 0 10px 30px -10px rgba(0,0,0,0.1);
+  border: 1px solid rgba(0,0,0,0.05);
+  
+  /* Critical for the stacking effect */
+  position: relative;
+  z-index: 1;
+}
+
+.scroll-stack-end {
+  height: 100vh; /* Extra space to allow scrolling past the last card */
+  width: 100%;
+}

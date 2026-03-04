@@ -13,6 +13,7 @@ import CardSwap, { Card } from '@/components/ui/CardSwap';
 import { useNavigate } from 'react-router-dom';
 
 import GlassButton from '@/components/ui/GlassButton';
+import ScrollStack, { ScrollStackItem } from '@/components/ui/ScrollStack';
 
 const HomePage: React.FC = () => {
   const navigate = useNavigate();
@@ -106,10 +107,10 @@ const HomePage: React.FC = () => {
         </div>
       </section>
 
-      {/* Features / Philosophy Section (Bento Grid Style) */}
-      <section className="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-4">
+      {/* Features / Philosophy Section (ScrollStack) */}
+      <section className="h-screen w-full relative">
+        <div className="absolute top-0 left-0 w-full pt-16 text-center z-10 pointer-events-none">
+          <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-4 pointer-events-auto">
              <ShinyText 
               text="为什么选择迷迭尔？" 
               disabled={false} 
@@ -119,92 +120,98 @@ const HomePage: React.FC = () => {
               shineColor="#4ade80" 
             />
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto pointer-events-auto">
             <EditableText id="why_desc" defaultText="我们坚持使用天然代糖，拒绝反式脂肪酸，只为给您更安心的选择。" />
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[minmax(200px,auto)]">
-          {/* Large Card */}
-          <div className="md:col-span-2 row-span-2">
-            <AnimatedContent
-                distance={50}
-                direction="vertical"
-                duration={0.8}
-                scale={0.95}
-                threshold={0.2}
-                className="h-full"
-            >
-                <div className="h-full rounded-3xl bg-white p-8 md:p-12 flex flex-col justify-between border border-black/5 hover:border-primary/50 transition-colors group relative overflow-hidden shadow-sm">
-                    <div className="relative z-10">
-                    <Leaf className="w-12 h-12 text-primary mb-6" />
-                    <h3 className="text-3xl font-bold mb-4 text-foreground"><EditableText id="feature_1_title" defaultText="真正零添加糖" /></h3>
-                    <p className="text-lg text-muted-foreground max-w-md">
+        <ScrollStack 
+            itemDistance={50} 
+            itemScale={0.05} 
+            itemStackDistance={30} 
+            stackPosition="25%" 
+            scaleEndPosition="15%" 
+            baseScale={0.9} 
+            scaleDuration={0.4} 
+            blurAmount={2}
+            className="h-full bg-secondary/10"
+        >
+            {/* Card 1 */}
+            <ScrollStackItem>
+                <div className="flex flex-col items-center text-center">
+                    <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-6">
+                        <Leaf className="w-8 h-8 text-primary" />
+                    </div>
+                    <h3 className="text-2xl font-bold mb-4 text-foreground"><EditableText id="feature_1_title" defaultText="真正零添加糖" /></h3>
+                    <p className="text-lg text-muted-foreground leading-relaxed">
                         <EditableText id="feature_1_desc" defaultText="我们使用赤藓糖醇、罗汉果甜苷等天然代糖，不参与人体代谢，不引起血糖剧烈波动。适合控糖人群及生酮饮食者。" />
                     </p>
+                    <div className="mt-8 w-full h-40 bg-gradient-to-b from-primary/5 to-transparent rounded-xl overflow-hidden relative">
+                         <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-32 h-32 bg-primary/20 rounded-full blur-3xl"></div>
                     </div>
-                    <div className="absolute right-0 bottom-0 w-64 h-64 bg-primary/5 rounded-full blur-3xl -z-0 group-hover:bg-primary/10 transition-all duration-500"></div>
                 </div>
-            </AnimatedContent>
-          </div>
+            </ScrollStackItem>
 
-          {/* Tall Card */}
-          <div className="md:col-span-1 row-span-2">
-            <AnimatedContent
-                distance={50}
-                direction="vertical"
-                duration={0.8}
-                delay={0.2}
-                scale={0.95}
-                threshold={0.2}
-                className="h-full"
-            >
-                <div className="h-full rounded-3xl bg-gradient-to-br from-primary/10 to-transparent border border-primary/10 p-8 flex flex-col justify-between shadow-sm relative overflow-hidden group">
-                    <div className="relative z-10">
-                    <Zap className="w-10 h-10 mb-6 text-yellow-500" />
-                    <h3 className="text-2xl font-bold mb-2 text-foreground"><EditableText id="feature_2_title" defaultText="生酮友好" /></h3>
-                    <p className="opacity-90 leading-relaxed text-muted-foreground">
+            {/* Card 2 */}
+            <ScrollStackItem>
+                <div className="flex flex-col items-center text-center">
+                    <div className="w-16 h-16 bg-yellow-500/10 rounded-full flex items-center justify-center mb-6">
+                        <Zap className="w-8 h-8 text-yellow-500" />
+                    </div>
+                    <h3 className="text-2xl font-bold mb-4 text-foreground"><EditableText id="feature_2_title" defaultText="生酮友好" /></h3>
+                    <p className="text-lg text-muted-foreground leading-relaxed">
                         <EditableText id="feature_2_desc" defaultText="高优质脂肪，适量蛋白质，极低碳水化合物。完美的生酮能量补给站。" />
                     </p>
+                    <div className="mt-8">
+                         <EditableLink id="feature_2_link" defaultText="查看生酮系列 →" defaultHref="/products/keto" className="text-primary font-semibold hover:underline" />
                     </div>
-                    <div className="mt-8 flex justify-end">
-                    <EditableLink id="feature_2_link" defaultText="查看生酮系列 →" defaultHref="/products/keto" className="inline-flex items-center text-sm font-semibold hover:underline underline-offset-4 text-primary" />
-                    </div>
-                    <div className="absolute -right-10 -top-10 w-40 h-40 bg-primary/10 rounded-full blur-2xl group-hover:scale-150 transition-transform duration-700"></div>
                 </div>
-            </AnimatedContent>
-          </div>
+            </ScrollStackItem>
 
-          {/* Small Card 1 */}
-          <AnimatedContent
-            distance={30}
-            direction="vertical"
-            duration={0.6}
-            delay={0.4}
-            threshold={0.2}
-          >
-            <div className="rounded-3xl bg-white border border-black/5 p-8 shadow-sm hover:border-primary/50 transition-all h-full">
-                <ShieldCheck className="w-8 h-8 text-blue-500 mb-4" />
-                <h3 className="text-xl font-bold mb-2 text-foreground"><EditableText id="feature_3_title" defaultText="清洁标签" /></h3>
-                <p className="text-sm text-muted-foreground"><EditableText id="feature_3_desc" defaultText="无防腐剂，无人工色素，配料表干净透明。" /></p>
-            </div>
-          </AnimatedContent>
+            {/* Card 3 */}
+            <ScrollStackItem>
+                <div className="flex flex-col items-center text-center">
+                    <div className="w-16 h-16 bg-blue-500/10 rounded-full flex items-center justify-center mb-6">
+                        <ShieldCheck className="w-8 h-8 text-blue-500" />
+                    </div>
+                    <h3 className="text-2xl font-bold mb-4 text-foreground"><EditableText id="feature_3_title" defaultText="清洁标签" /></h3>
+                    <p className="text-lg text-muted-foreground leading-relaxed">
+                        <EditableText id="feature_3_desc" defaultText="无防腐剂，无人工色素，配料表干净透明。我们承诺只使用您能读懂的食材。" />
+                    </p>
+                </div>
+            </ScrollStackItem>
 
-          {/* Small Card 2 */}
-          <AnimatedContent
-            distance={30}
-            direction="vertical"
-            duration={0.6}
-            delay={0.5}
-            threshold={0.2}
-          >
-            <div className="rounded-3xl bg-white border border-black/5 p-8 shadow-sm hover:border-primary/50 transition-all h-full">
-                <Heart className="w-8 h-8 text-red-500 mb-4" />
-                <h3 className="text-xl font-bold mb-2 text-foreground"><EditableText id="feature_4_title" defaultText="用心烘焙" /></h3>
-                <p className="text-sm text-muted-foreground"><EditableText id="feature_4_desc" defaultText="每日新鲜现做，保留食材最原本的风味。" /></p>
-            </div>
-          </AnimatedContent>
-        </div>
+             {/* Card 4 */}
+             <ScrollStackItem>
+                <div className="flex flex-col items-center text-center">
+                    <div className="w-16 h-16 bg-red-500/10 rounded-full flex items-center justify-center mb-6">
+                        <Heart className="w-8 h-8 text-red-500" />
+                    </div>
+                    <h3 className="text-2xl font-bold mb-4 text-foreground"><EditableText id="feature_4_title" defaultText="用心烘焙" /></h3>
+                    <p className="text-lg text-muted-foreground leading-relaxed">
+                        <EditableText id="feature_4_desc" defaultText="每日新鲜现做，保留食材最原本的风味。每一份甜点都倾注了烘焙师的心意。" />
+                    </p>
+                </div>
+            </ScrollStackItem>
+
+            {/* Final Card */}
+            <ScrollStackItem itemClassName="bg-primary text-primary-foreground">
+                <div className="flex flex-col items-center justify-center h-64 text-center">
+                    <h2 className="text-3xl md:text-5xl font-bold mb-6">
+                        全部尽在迷迭尔！
+                    </h2>
+                    <Button 
+                        variant="secondary" 
+                        size="lg" 
+                        className="rounded-full px-8 font-semibold text-lg"
+                        onClick={() => navigate('/products')}
+                    >
+                        立即开启健康美味
+                    </Button>
+                </div>
+            </ScrollStackItem>
+
+        </ScrollStack>
       </section>
 
       {/* Product Showcase Preview */}
