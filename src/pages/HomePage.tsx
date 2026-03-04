@@ -14,6 +14,7 @@ import { useNavigate } from 'react-router-dom';
 
 import GlassButton from '@/components/ui/GlassButton';
 import ScrollStack, { ScrollStackItem } from '@/components/ui/ScrollStack';
+import SpotlightCard from '@/components/ui/SpotlightCard';
 
 const HomePage: React.FC = () => {
   const navigate = useNavigate();
@@ -137,8 +138,8 @@ const HomePage: React.FC = () => {
             className="h-full bg-secondary/10"
         >
             {/* Card 1 */}
-            <ScrollStackItem>
-                <div className="flex flex-col items-center text-center">
+            <ScrollStackItem itemClassName="p-0 bg-transparent border-none shadow-none">
+                <SpotlightCard className="p-10 rounded-3xl bg-white border border-black/5 shadow-sm h-full flex flex-col items-center text-center" spotlightColor="rgba(0, 229, 255, 0.1)">
                     <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-6">
                         <Leaf className="w-8 h-8 text-primary" />
                     </div>
@@ -149,12 +150,12 @@ const HomePage: React.FC = () => {
                     <div className="mt-8 w-full h-40 bg-gradient-to-b from-primary/5 to-transparent rounded-xl overflow-hidden relative">
                          <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-32 h-32 bg-primary/20 rounded-full blur-3xl"></div>
                     </div>
-                </div>
+                </SpotlightCard>
             </ScrollStackItem>
 
             {/* Card 2 */}
-            <ScrollStackItem>
-                <div className="flex flex-col items-center text-center">
+            <ScrollStackItem itemClassName="p-0 bg-transparent border-none shadow-none">
+                <SpotlightCard className="p-10 rounded-3xl bg-white border border-black/5 shadow-sm h-full flex flex-col items-center text-center" spotlightColor="rgba(255, 200, 0, 0.1)">
                     <div className="w-16 h-16 bg-yellow-500/10 rounded-full flex items-center justify-center mb-6">
                         <Zap className="w-8 h-8 text-yellow-500" />
                     </div>
@@ -165,12 +166,12 @@ const HomePage: React.FC = () => {
                     <div className="mt-8">
                          <EditableLink id="feature_2_link" defaultText="查看生酮系列 →" defaultHref="/products/keto" className="text-primary font-semibold hover:underline" />
                     </div>
-                </div>
+                </SpotlightCard>
             </ScrollStackItem>
 
             {/* Card 3 */}
-            <ScrollStackItem>
-                <div className="flex flex-col items-center text-center">
+            <ScrollStackItem itemClassName="p-0 bg-transparent border-none shadow-none">
+                <SpotlightCard className="p-10 rounded-3xl bg-white border border-black/5 shadow-sm h-full flex flex-col items-center text-center" spotlightColor="rgba(0, 100, 255, 0.1)">
                     <div className="w-16 h-16 bg-blue-500/10 rounded-full flex items-center justify-center mb-6">
                         <ShieldCheck className="w-8 h-8 text-blue-500" />
                     </div>
@@ -178,12 +179,12 @@ const HomePage: React.FC = () => {
                     <p className="text-lg text-muted-foreground leading-relaxed">
                         <EditableText id="feature_3_desc" defaultText="无防腐剂，无人工色素，配料表干净透明。我们承诺只使用您能读懂的食材。" />
                     </p>
-                </div>
+                </SpotlightCard>
             </ScrollStackItem>
 
              {/* Card 4 */}
-             <ScrollStackItem>
-                <div className="flex flex-col items-center text-center">
+             <ScrollStackItem itemClassName="p-0 bg-transparent border-none shadow-none">
+                <SpotlightCard className="p-10 rounded-3xl bg-white border border-black/5 shadow-sm h-full flex flex-col items-center text-center" spotlightColor="rgba(255, 0, 0, 0.1)">
                     <div className="w-16 h-16 bg-red-500/10 rounded-full flex items-center justify-center mb-6">
                         <Heart className="w-8 h-8 text-red-500" />
                     </div>
@@ -191,7 +192,7 @@ const HomePage: React.FC = () => {
                     <p className="text-lg text-muted-foreground leading-relaxed">
                         <EditableText id="feature_4_desc" defaultText="每日新鲜现做，保留食材最原本的风味。每一份甜点都倾注了烘焙师的心意。" />
                     </p>
-                </div>
+                </SpotlightCard>
             </ScrollStackItem>
 
             {/* Final Card */}
