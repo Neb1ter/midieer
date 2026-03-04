@@ -13,7 +13,6 @@ import CardSwap, { Card } from '@/components/ui/CardSwap';
 import { useNavigate } from 'react-router-dom';
 
 import GlassButton from '@/components/ui/GlassButton';
-import ScrollStack, { ScrollStackItem } from '@/components/ui/ScrollStack';
 import SpotlightCard from '@/components/ui/SpotlightCard';
 
 const HomePage: React.FC = () => {
@@ -108,111 +107,98 @@ const HomePage: React.FC = () => {
         </div>
       </section>
 
-      {/* Features / Philosophy Section (ScrollStack) */}
-      <section className="h-screen w-full relative">
-        <div className="absolute top-0 left-0 w-full pt-16 text-center z-10 pointer-events-none">
-          <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-4 pointer-events-auto">
-             <ShinyText 
-              text="为什么选择迷迭尔？" 
-              disabled={false} 
-              speed={4} 
-              className="" 
-              color="#1f2937" 
-              shineColor="#4ade80" 
-            />
-          </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto pointer-events-auto">
-            <EditableText id="why_desc" defaultText="我们坚持使用天然代糖，拒绝反式脂肪酸，只为给您更安心的选择。" />
-          </p>
-        </div>
+      {/* Features / Philosophy Section */}
+      <section className="w-full relative py-20 bg-secondary/10">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-4">
+               <ShinyText 
+                text="为什么选择迷迭尔？" 
+                disabled={false} 
+                speed={4} 
+                className="" 
+                color="#1f2937" 
+                shineColor="#4ade80" 
+              />
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              <EditableText id="why_desc" defaultText="我们坚持使用天然代糖，拒绝反式脂肪酸，只为给您更安心的选择。" />
+            </p>
+          </div>
 
-        <ScrollStack 
-            itemDistance={50} 
-            itemScale={0.05} 
-            itemStackDistance={30} 
-            stackPosition="25%" 
-            scaleEndPosition="15%" 
-            baseScale={0.9} 
-            scaleDuration={0.4} 
-            blurAmount={2}
-            className="h-full bg-secondary/10"
-        >
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {/* Card 1 */}
-            <ScrollStackItem itemClassName="p-0 bg-transparent border-none shadow-none">
-                <SpotlightCard className="p-10 rounded-3xl bg-white border border-black/5 shadow-sm h-full flex flex-col items-center text-center" spotlightColor="rgba(0, 229, 255, 0.1)">
-                    <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-6">
-                        <Leaf className="w-8 h-8 text-primary" />
-                    </div>
-                    <h3 className="text-2xl font-bold mb-4 text-foreground"><EditableText id="feature_1_title" defaultText="真正零添加糖" /></h3>
-                    <p className="text-lg text-muted-foreground leading-relaxed">
-                        <EditableText id="feature_1_desc" defaultText="我们使用赤藓糖醇、罗汉果甜苷等天然代糖，不参与人体代谢，不引起血糖剧烈波动。适合控糖人群及生酮饮食者。" />
-                    </p>
-                    <div className="mt-8 w-full h-40 bg-gradient-to-b from-primary/5 to-transparent rounded-xl overflow-hidden relative">
-                         <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-32 h-32 bg-primary/20 rounded-full blur-3xl"></div>
-                    </div>
-                </SpotlightCard>
-            </ScrollStackItem>
+            <SpotlightCard className="p-10 rounded-3xl bg-white border border-black/5 shadow-sm h-full flex flex-col items-center text-center" spotlightColor="rgba(0, 229, 255, 0.1)">
+                <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-6">
+                    <Leaf className="w-8 h-8 text-primary" />
+                </div>
+                <h3 className="text-2xl font-bold mb-4 text-foreground"><EditableText id="feature_1_title" defaultText="真正零添加糖" /></h3>
+                <p className="text-lg text-muted-foreground leading-relaxed">
+                    <EditableText id="feature_1_desc" defaultText="我们使用赤藓糖醇、罗汉果甜苷等天然代糖，不参与人体代谢，不引起血糖剧烈波动。适合控糖人群及生酮饮食者。" />
+                </p>
+                <div className="mt-8 w-full h-40 bg-gradient-to-b from-primary/5 to-transparent rounded-xl overflow-hidden relative">
+                     <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-32 h-32 bg-primary/20 rounded-full blur-3xl"></div>
+                </div>
+            </SpotlightCard>
 
             {/* Card 2 */}
-            <ScrollStackItem itemClassName="p-0 bg-transparent border-none shadow-none">
-                <SpotlightCard className="p-10 rounded-3xl bg-white border border-black/5 shadow-sm h-full flex flex-col items-center text-center" spotlightColor="rgba(255, 200, 0, 0.1)">
-                    <div className="w-16 h-16 bg-yellow-500/10 rounded-full flex items-center justify-center mb-6">
-                        <Zap className="w-8 h-8 text-yellow-500" />
-                    </div>
-                    <h3 className="text-2xl font-bold mb-4 text-foreground"><EditableText id="feature_2_title" defaultText="生酮友好" /></h3>
-                    <p className="text-lg text-muted-foreground leading-relaxed">
-                        <EditableText id="feature_2_desc" defaultText="高优质脂肪，适量蛋白质，极低碳水化合物。完美的生酮能量补给站。" />
-                    </p>
-                    <div className="mt-8">
-                         <EditableLink id="feature_2_link" defaultText="查看生酮系列 →" defaultHref="/products/keto" className="text-primary font-semibold hover:underline" />
-                    </div>
-                </SpotlightCard>
-            </ScrollStackItem>
+            <SpotlightCard className="p-10 rounded-3xl bg-white border border-black/5 shadow-sm h-full flex flex-col items-center text-center" spotlightColor="rgba(255, 200, 0, 0.1)">
+                <div className="w-16 h-16 bg-yellow-500/10 rounded-full flex items-center justify-center mb-6">
+                    <Zap className="w-8 h-8 text-yellow-500" />
+                </div>
+                <h3 className="text-2xl font-bold mb-4 text-foreground"><EditableText id="feature_2_title" defaultText="生酮友好" /></h3>
+                <p className="text-lg text-muted-foreground leading-relaxed">
+                    <EditableText id="feature_2_desc" defaultText="高优质脂肪，适量蛋白质，极低碳水化合物。完美的生酮能量补给站。" />
+                </p>
+                <div className="mt-8">
+                     <EditableLink id="feature_2_link" defaultText="查看生酮系列 →" defaultHref="/products/keto" className="text-primary font-semibold hover:underline" />
+                </div>
+            </SpotlightCard>
 
             {/* Card 3 */}
-            <ScrollStackItem itemClassName="p-0 bg-transparent border-none shadow-none">
-                <SpotlightCard className="p-10 rounded-3xl bg-white border border-black/5 shadow-sm h-full flex flex-col items-center text-center" spotlightColor="rgba(0, 100, 255, 0.1)">
-                    <div className="w-16 h-16 bg-blue-500/10 rounded-full flex items-center justify-center mb-6">
-                        <ShieldCheck className="w-8 h-8 text-blue-500" />
-                    </div>
-                    <h3 className="text-2xl font-bold mb-4 text-foreground"><EditableText id="feature_3_title" defaultText="清洁标签" /></h3>
-                    <p className="text-lg text-muted-foreground leading-relaxed">
-                        <EditableText id="feature_3_desc" defaultText="无防腐剂，无人工色素，配料表干净透明。我们承诺只使用您能读懂的食材。" />
-                    </p>
-                </SpotlightCard>
-            </ScrollStackItem>
+            <SpotlightCard className="p-10 rounded-3xl bg-white border border-black/5 shadow-sm h-full flex flex-col items-center text-center" spotlightColor="rgba(0, 100, 255, 0.1)">
+                <div className="w-16 h-16 bg-blue-500/10 rounded-full flex items-center justify-center mb-6">
+                    <ShieldCheck className="w-8 h-8 text-blue-500" />
+                </div>
+                <h3 className="text-2xl font-bold mb-4 text-foreground"><EditableText id="feature_3_title" defaultText="清洁标签" /></h3>
+                <p className="text-lg text-muted-foreground leading-relaxed">
+                    <EditableText id="feature_3_desc" defaultText="无防腐剂，无人工色素，配料表干净透明。我们承诺只使用您能读懂的食材。" />
+                </p>
+            </SpotlightCard>
 
              {/* Card 4 */}
-             <ScrollStackItem itemClassName="p-0 bg-transparent border-none shadow-none">
-                <SpotlightCard className="p-10 rounded-3xl bg-white border border-black/5 shadow-sm h-full flex flex-col items-center text-center" spotlightColor="rgba(255, 0, 0, 0.1)">
-                    <div className="w-16 h-16 bg-red-500/10 rounded-full flex items-center justify-center mb-6">
-                        <Heart className="w-8 h-8 text-red-500" />
-                    </div>
-                    <h3 className="text-2xl font-bold mb-4 text-foreground"><EditableText id="feature_4_title" defaultText="用心烘焙" /></h3>
-                    <p className="text-lg text-muted-foreground leading-relaxed">
-                        <EditableText id="feature_4_desc" defaultText="每日新鲜现做，保留食材最原本的风味。每一份甜点都倾注了烘焙师的心意。" />
-                    </p>
-                </SpotlightCard>
-            </ScrollStackItem>
+            <SpotlightCard className="p-10 rounded-3xl bg-white border border-black/5 shadow-sm h-full flex flex-col items-center text-center" spotlightColor="rgba(255, 0, 0, 0.1)">
+                <div className="w-16 h-16 bg-red-500/10 rounded-full flex items-center justify-center mb-6">
+                    <Heart className="w-8 h-8 text-red-500" />
+                </div>
+                <h3 className="text-2xl font-bold mb-4 text-foreground"><EditableText id="feature_4_title" defaultText="用心烘焙" /></h3>
+                <p className="text-lg text-muted-foreground leading-relaxed">
+                    <EditableText id="feature_4_desc" defaultText="每日新鲜现做，保留食材最原本的风味。每一份甜点都倾注了烘焙师的心意。" />
+                </p>
+            </SpotlightCard>
 
-            {/* Final Card */}
-            <ScrollStackItem itemClassName="bg-primary text-primary-foreground">
-                <div className="flex flex-col items-center justify-center h-64 text-center">
+            {/* Final Card - Spans 2 columns on lg screens to create a balanced look if possible, or just sits in the grid */}
+            <div className="p-10 rounded-3xl bg-primary text-primary-foreground shadow-sm h-full flex flex-col items-center justify-center text-center md:col-span-2 lg:col-span-2 relative overflow-hidden">
+                <div className="relative z-10 flex flex-col items-center">
                     <h2 className="text-3xl md:text-5xl font-bold mb-6">
                         全部尽在迷迭尔！
                     </h2>
                     <Button 
                         variant="secondary" 
                         size="lg" 
-                        className="rounded-full px-8 font-semibold text-lg"
+                        className="rounded-full px-8 font-semibold text-lg shadow-lg hover:scale-105 transition-transform"
                         onClick={() => navigate('/products')}
                     >
                         立即开启健康美味
                     </Button>
                 </div>
-            </ScrollStackItem>
+                {/* Decorative background circles */}
+                <div className="absolute top-0 right-0 -mr-16 -mt-16 w-64 h-64 bg-white/10 rounded-full blur-3xl"></div>
+                <div className="absolute bottom-0 left-0 -ml-16 -mb-16 w-64 h-64 bg-white/10 rounded-full blur-3xl"></div>
+            </div>
 
-        </ScrollStack>
+          </div>
+        </div>
       </section>
 
       {/* Product Showcase Preview */}
