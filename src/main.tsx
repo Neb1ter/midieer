@@ -35,6 +35,7 @@ class ErrorBoundary extends React.Component<
   }
 }
 
+console.log('Midieer App Version: 2026-03-04 21:20:47');
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <ErrorBoundary>
