@@ -39,9 +39,9 @@ const HealthPage: React.FC = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-background text-foreground">
       {/* Header */}
-      <section className="relative py-20 bg-gradient-to-br from-green-50 to-emerald-100 overflow-hidden">
+      <section className="relative py-20 bg-gradient-to-br from-green-100/50 to-emerald-50/30 border-b border-border overflow-hidden">
         <div className="absolute top-0 right-0 w-1/3 h-full bg-[url('https://images.unsplash.com/photo-1498837167922-ddd27525d352?w=800&auto=format&fit=crop&q=60')] bg-cover opacity-10 blur-[2px]"></div>
         <div className="container mx-auto px-4 relative z-10">
           <motion.div
@@ -51,19 +51,19 @@ const HealthPage: React.FC = () => {
             className="max-w-2xl"
           >
             <span className="text-primary font-bold tracking-wider uppercase text-sm mb-2 block">Health Academy</span>
-            <h1 className="text-4xl md:text-6xl font-extrabold text-gray-900 mb-6 leading-tight">
+            <h1 className="text-4xl md:text-6xl font-extrabold text-foreground mb-6 leading-tight">
               健康学院 <br/>
               <span className="text-primary">重塑您的饮食认知</span>
             </h1>
-            <p className="text-xl text-gray-700 mb-8 leading-relaxed">
+            <p className="text-xl text-muted-foreground mb-8 leading-relaxed">
               在这里，我们不仅提供食物，更传递健康的生活理念。
               深入了解营养学知识，做自己身体的掌舵人。
             </p>
             <div className="flex flex-wrap gap-4">
-              <Button size="lg" className="rounded-full px-8 bg-primary hover:bg-primary/90 text-white shadow-lg hover:shadow-xl transition-all">
+              <Button size="lg" className="rounded-full px-8 bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg hover:shadow-xl transition-all">
                 开始学习
               </Button>
-              <Button size="lg" variant="outline" className="rounded-full px-8 border-gray-300 hover:bg-white hover:text-primary">
+              <Button size="lg" variant="outline" className="rounded-full px-8 border-border hover:bg-muted text-foreground">
                 订阅周刊
               </Button>
             </div>
@@ -72,7 +72,7 @@ const HealthPage: React.FC = () => {
       </section>
 
       {/* Features Grid */}
-      <section className="py-16 bg-white">
+      <section className="py-16">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {features.map((feature, index) => (
@@ -82,13 +82,13 @@ const HealthPage: React.FC = () => {
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1, duration: 0.5 }}
                 key={index}
-                className="p-6 rounded-2xl bg-gray-50 border border-gray-100 hover:shadow-md transition-shadow"
+                className="p-6 rounded-2xl bg-card border border-border hover:border-primary/50 hover:shadow-md transition-all"
               >
-                <div className="w-12 h-12 rounded-xl bg-white shadow-sm flex items-center justify-center mb-4">
+                <div className="w-12 h-12 rounded-xl bg-muted border border-border shadow-sm flex items-center justify-center mb-4">
                   {feature.icon}
                 </div>
-                <h3 className="text-lg font-bold text-gray-900 mb-2">{feature.title}</h3>
-                <p className="text-gray-500 text-sm">{feature.desc}</p>
+                <h3 className="text-lg font-bold text-foreground mb-2">{feature.title}</h3>
+                <p className="text-muted-foreground text-sm">{feature.desc}</p>
               </motion.div>
             ))}
           </div>
@@ -96,12 +96,12 @@ const HealthPage: React.FC = () => {
       </section>
 
       {/* Articles List */}
-      <section className="py-16 bg-gray-50/50">
+      <section className="py-16">
         <div className="container mx-auto px-4">
           <div className="flex justify-between items-end mb-12">
             <div>
-              <h2 className="text-3xl font-bold text-gray-900 mb-2">最新文章</h2>
-              <p className="text-gray-500">探索最新的营养科学与健康资讯</p>
+              <h2 className="text-3xl font-bold text-foreground mb-2">最新文章</h2>
+              <p className="text-muted-foreground">探索最新的营养科学与健康资讯</p>
             </div>
             <a href="#" className="text-primary font-medium hover:underline hidden sm:flex items-center">
               查看更多 <ArrowRight className="w-4 h-4 ml-1" />
@@ -116,28 +116,28 @@ const HealthPage: React.FC = () => {
                 viewport={{ once: true }}
                 transition={{ delay: idx * 0.2 }}
                 key={article.id}
-                className="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col h-full"
+                className="group bg-card border border-border rounded-2xl overflow-hidden shadow-sm hover:border-primary/50 hover:shadow-xl transition-all duration-300 flex flex-col h-full"
               >
                 <div className="h-48 overflow-hidden relative">
                   <img 
                     src={article.image} 
                     alt={article.title}
-                    className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
+                    className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500 opacity-90 group-hover:opacity-100"
                   />
-                  <div className="absolute top-4 left-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full text-xs font-bold text-primary">
+                  <div className="absolute top-4 left-4 bg-background/80 backdrop-blur px-3 py-1 rounded-full text-xs font-bold text-primary border border-border shadow-sm">
                     {article.category}
                   </div>
                 </div>
                 <div className="p-6 flex-1 flex flex-col">
-                  <div className="text-xs text-gray-400 mb-3 flex items-center">
+                  <div className="text-xs text-muted-foreground mb-3 flex items-center">
                     <span>{article.readTime} 阅读</span>
                     <span className="mx-2">•</span>
                     <span>2024-03-20</span>
                   </div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-primary transition-colors">
+                  <h3 className="text-xl font-bold text-foreground mb-3 group-hover:text-primary transition-colors">
                     {article.title}
                   </h3>
-                  <p className="text-gray-500 text-sm mb-6 flex-1 leading-relaxed">
+                  <p className="text-muted-foreground text-sm mb-6 flex-1 leading-relaxed">
                     {article.excerpt}
                   </p>
                   <a href="#" className="inline-flex items-center text-primary font-medium hover:translate-x-1 transition-transform">
@@ -149,29 +149,29 @@ const HealthPage: React.FC = () => {
           </div>
           
           <div className="mt-8 text-center sm:hidden">
-             <Button variant="outline" className="w-full">查看更多文章</Button>
+             <Button variant="outline" className="w-full border-border text-foreground hover:bg-muted">查看更多文章</Button>
           </div>
         </div>
       </section>
 
       {/* Newsletter */}
-      <section className="py-20 bg-primary/5">
+      <section className="py-20 bg-primary/5 border-t border-border">
         <div className="container mx-auto px-4 text-center max-w-3xl">
-          <h2 className="text-3xl font-bold text-gray-900 mb-4">加入我们的健康社区</h2>
-          <p className="text-gray-600 mb-8">
+          <h2 className="text-3xl font-bold text-foreground mb-4">加入我们的健康社区</h2>
+          <p className="text-muted-foreground mb-8">
             每周一封邮件，分享最新的低糖食谱和营养知识，已有超过 10,000 名订阅者。
           </p>
           <div className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
             <input 
               type="email" 
               placeholder="请输入您的邮箱地址" 
-              className="flex-1 px-4 py-3 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-primary/50"
+              className="flex-1 px-4 py-3 rounded-lg border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 placeholder:text-muted-foreground"
             />
-            <Button className="bg-primary hover:bg-primary/90 text-white px-8 py-3 rounded-lg h-auto">
+            <Button className="bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-3 rounded-lg h-auto">
               立即订阅
             </Button>
           </div>
-          <div className="mt-6 flex items-center justify-center gap-6 text-sm text-gray-500">
+          <div className="mt-6 flex items-center justify-center gap-6 text-sm text-muted-foreground">
             <span className="flex items-center"><CheckCircle className="w-4 h-4 mr-1 text-green-500" /> 免费订阅</span>
             <span className="flex items-center"><CheckCircle className="w-4 h-4 mr-1 text-green-500" /> 随时退订</span>
             <span className="flex items-center"><CheckCircle className="w-4 h-4 mr-1 text-green-500" /> 隐私保护</span>

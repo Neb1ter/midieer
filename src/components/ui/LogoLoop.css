@@ -1,0 +1,102 @@
+.logoloop {
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    /* Ensure the container has a size for horizontal or vertical */
+  }
+  
+  .logoloop--horizontal {
+    flex-direction: row;
+    height: auto; /* Allow height to be determined by content or prop */
+  }
+  
+  .logoloop--vertical {
+    flex-direction: column;
+    /* height must be set via props or parent for vertical to work effectively */
+  }
+  
+  .logoloop__track {
+    display: flex;
+    /* will-change: transform; Optimization */
+    /* backface-visibility: hidden; Optimization */
+  }
+  
+  .logoloop--horizontal .logoloop__track {
+    flex-direction: row;
+    width: max-content; /* Allow track to be as wide as needed */
+    height: 100%;
+  }
+  
+  .logoloop--vertical .logoloop__track {
+    flex-direction: column;
+    height: max-content; /* Allow track to be as tall as needed */
+    width: 100%;
+  }
+  
+  .logoloop__list {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    flex-shrink: 0; /* Prevent list from shrinking */
+  }
+  
+  .logoloop--horizontal .logoloop__list {
+    flex-direction: row;
+    align-items: center;
+    gap: var(--logoloop-gap, 32px);
+    padding-right: var(--logoloop-gap, 32px); /* Spacing after last item to match gap */
+  }
+  
+  .logoloop--vertical .logoloop__list {
+    flex-direction: column;
+    align-items: center;
+    gap: var(--logoloop-gap, 32px);
+    padding-bottom: var(--logoloop-gap, 32px); /* Spacing after last item */
+  }
+  
+  .logoloop__item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  
+  .logoloop__item img,
+  .logoloop__item svg {
+    height: var(--logoloop-logoHeight, 28px);
+    width: auto;
+    max-width: none; /* Prevent max-width: 100% from parent styles affecting logo size */
+    object-fit: contain;
+    display: block;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+  }
+  
+  .logoloop__link {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    transition: opacity 0.2s;
+  }
+  
+  .logoloop__link:hover {
+    opacity: 0.8;
+  }
+  
+  /* Scale on hover effect */
+  .logoloop--scale-hover .logoloop__item img:hover,
+  .logoloop--scale-hover .logoloop__item svg:hover {
+    transform: scale(1.1);
+  }
+  
+  /* Fade out edges effect using Mask Image for better gradient support */
+  .logoloop--fade {
+    mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  }
+
+  /* Remove old pseudo-element fade implementation */
+  .logoloop--fade::before,
+  .logoloop--fade::after {
+    display: none;
+  }

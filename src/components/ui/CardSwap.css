@@ -1,0 +1,20 @@
+.card-swap-container {
+  position: relative;
+  perspective: 1000px;
+  margin: 0 auto;
+}
+
+.card {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform-style: preserve-3d;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15); /* Softer shadow for light mode */
+  border-radius: 24px;
+  overflow: hidden;
+  background: white; /* Light mode */
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}

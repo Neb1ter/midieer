@@ -1,0 +1,161 @@
+.card-nav-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  /* Remove pointer-events: none; so that it can receive clicks */
+  position: relative;
+  z-index: 50;
+}
+
+.card-nav {
+  position: relative;
+  width: 100%;
+  max-width: 800px;
+  background: #fff;
+  border-radius: 30px;
+  padding: 0 20px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+  overflow: hidden;
+  will-change: height;
+  z-index: 51; /* Ensure nav is above overlay */
+}
+
+.card-nav-top {
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.hamburger-menu {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 6px;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.hamburger-line {
+  width: 100%;
+  height: 2px;
+  background-color: currentColor;
+  border-radius: 2px;
+  transition: transform 0.2s ease, opacity 0.2s ease; /* Faster toggle animation */
+}
+
+.hamburger-menu.open .hamburger-line:first-child {
+  transform: translateY(8px) rotate(45deg);
+}
+
+.hamburger-menu.open .hamburger-line:last-child {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo {
+  height: 24px;
+  width: auto;
+}
+
+.card-nav-cta-button {
+  border: none;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.card-nav-cta-button:hover {
+  opacity: 0.8;
+}
+
+.card-nav-content {
+  display: flex;
+  gap: 16px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  visibility: visible; /* Changed from hidden to visible to fix empty menu issue */
+  opacity: 0; /* Use opacity for animation instead */
+  transition: opacity 0.2s ease;
+}
+
+.card-nav.open .card-nav-content {
+  opacity: 1;
+  transition-delay: 0.1s;
+}
+
+.nav-card {
+  flex: 1;
+  border-radius: 20px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-height: 180px;
+  transition: transform 0.3s ease;
+  /* Ensure text colors are readable */
+}
+
+.nav-card:hover {
+  transform: translateY(-4px);
+}
+
+.nav-card-label {
+  font-size: 18px;
+  font-weight: 700;
+  opacity: 0.9;
+}
+
+.nav-card-links {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.nav-card-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  color: inherit;
+  opacity: 0.8;
+  transition: opacity 0.2s;
+}
+
+.nav-card-link:hover {
+  opacity: 1;
+}
+
+.nav-card-link-icon {
+  font-size: 16px;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .card-nav {
+    border-radius: 0 0 20px 20px;
+    max-width: 100%;
+  }
+
+  .card-nav-content {
+    flex-direction: column;
+    padding-bottom: 30px;
+  }
+
+  .nav-card {
+    min-height: auto;
+    padding: 16px;
+  }
+}
