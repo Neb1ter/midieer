@@ -228,8 +228,8 @@ const CardNav: React.FC<CardNavProps> = ({
                     navigate(item.links[index].href);
                     closeMenu();
                   }}
-                  itemClassName="hover:bg-muted rounded-lg transition-colors px-4 py-2"
-                  displayScrollbar={true}
+                  itemClassName="hover:bg-muted rounded-lg transition-colors px-4 py-2 text-foreground font-semibold"
+                  displayScrollbar={false}
                   showGradients={true}
                 />
               </div>
