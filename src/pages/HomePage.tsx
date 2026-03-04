@@ -11,7 +11,6 @@ import LogoLoop from '@/components/ui/LogoLoop';
 import AnimatedContent from '@/components/ui/AnimatedContent';
 import CardSwap, { Card } from '@/components/ui/CardSwap';
 import { useNavigate } from 'react-router-dom';
-import GradualBlur from '@/components/ui/GradualBlur';
 
 import GlassButton from '@/components/ui/GlassButton';
 
@@ -28,27 +27,7 @@ const HomePage: React.FC = () => {
 
   return (
     <div className="flex flex-col w-full bg-background text-foreground min-h-screen relative">
-      <GradualBlur 
-        preset="page-header" 
-        zIndex={40} 
-        style={{ 
-          maxWidth: '1200px', 
-          left: '50%', 
-          transform: 'translateX(-50%)', 
-          width: '100%' 
-        }} 
-      />
-      <GradualBlur 
-        preset="page-footer" 
-        zIndex={40}
-        style={{ 
-          maxWidth: '1200px', 
-          left: '50%', 
-          transform: 'translateX(-50%)', 
-          width: '100%' 
-        }}
-      />
-      
+
       {/* Hero Section */}
       <section className="relative min-h-[85vh] flex flex-col items-center justify-center text-center px-4 overflow-hidden pt-20">
         {/* Light Gradient Background */}
