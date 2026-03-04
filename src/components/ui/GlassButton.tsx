@@ -1,6 +1,5 @@
 import React from 'react';
 import { cn } from '@/lib/utils';
-import { ButtonHTMLAttributes } from 'react';
 import LiquidGlass from './LiquidGlass';
 
 interface GlassButtonProps extends React.HTMLAttributes<HTMLElement> {

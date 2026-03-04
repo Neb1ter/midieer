@@ -11,7 +11,6 @@ import LogoLoop from '@/components/ui/LogoLoop';
 import AnimatedContent from '@/components/ui/AnimatedContent';
 import CardSwap, { Card } from '@/components/ui/CardSwap';
 import { useNavigate } from 'react-router-dom';
-import LiquidGlass from '@/components/ui/LiquidGlass';
 
 import GlassButton from '@/components/ui/GlassButton';
 
