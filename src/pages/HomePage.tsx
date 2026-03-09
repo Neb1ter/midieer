@@ -36,7 +36,7 @@ const HomePage: React.FC = () => {
         
         <div className="animate-fade-in space-y-8 max-w-4xl mx-auto z-10 relative">
           <span className="inline-block px-4 py-1.5 rounded-full bg-secondary text-primary font-medium text-sm tracking-wide mb-4 border border-primary/20 shadow-sm">
-            <EditableText id="hero_badge" defaultText="重新定义健康甜点" />
+            <EditableText id="hero_badge" defaultText="重新定义健康甜点 v2026.03.09" />
           </span>
           <motion.h1 
             initial={{ opacity: 0, y: 20 }}
